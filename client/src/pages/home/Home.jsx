@@ -1,5 +1,10 @@
 import React from "react";
+import Posts from "../../components/posts/Posts";
 
 export default function Home() {
-    return <div>Home</div>;
+    return (
+        <div>
+            <Posts />
+        </div>
+    );
 }

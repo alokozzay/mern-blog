@@ -1,0 +1,27 @@
+.post_detail {
+    width: var(--form-width);
+    background: var(--color-white);
+    margin-inline: auto;
+    padding: 2rem 0;
+}
+.container {
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+.buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.image {
+    height: fit-content;
+    max-height: 30rem;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+.text {
+    margin-bottom: 0.7rem;
+}

@@ -1,14 +1,17 @@
 import React, { useState } from "react";
-import indexStyles from "../../../index.module.css";
 import style from "./style.module.css";
-import { DUMMY_POSTS } from "../../../assets/data";
-import PostItem from "../../../components/postItem/PostItem";
+import indexStyles from "../../index.module.css";
 
-export default function CategoryPosts() {
+import PostItem from "../postItem/PostItem";
+import { DUMMY_POSTS } from "../../assets/data";
+
+// компонент для отображения списка постов на главной странице
+
+export default function Posts() {
     const [posts, setPosts] = useState(DUMMY_POSTS);
 
     return (
-        <section className={style.main}>
+        <section className={`${style.posts}`}>
             {posts.length > 0 ? (
                 <div className={`${indexStyles.container} ${style.container}`}>
                     {posts.map((post) => (

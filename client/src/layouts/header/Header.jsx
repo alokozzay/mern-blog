@@ -2,11 +2,12 @@ import React from "react";
 import Logo from "../../assets/Logo.png";
 import { Link } from "react-router-dom";
 import style from "./style.module.css";
+import indexStyle from "../../index.module.css";
 
 export default function Header() {
     return (
         <div className={style.navbar}>
-            <div className={`container ${style.container}`}>
+            <div className={`${indexStyle.container} ${style.container}`}>
                 <Link to="/">
                     <img src={Logo} alt="Logo" className={style.logo} />
                 </Link>

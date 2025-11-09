@@ -1,0 +1,14 @@
+.input {
+    padding: 0.6rem 1rem;
+    border-radius: var(--radius-1);
+    font-size: 1.2rem;
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: ;
+}
+.text_input {
+    margin-bottom: 0.3rem;
+}
+.input_container {
+}

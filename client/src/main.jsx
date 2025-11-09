@@ -8,7 +8,7 @@ import UserProfile from "./pages/users/UserProfile.jsx";
 import Registration from "./pages/auth/Registration.jsx";
 import Login from "./pages/auth/Login.jsx";
 import Logout from "./pages/auth/Logout.jsx";
-import AuthorPost from "./pages/users/AuthorPosts.jsx";
+import AuthorPosts from "./pages/posts/authorPosts/AuthorPosts.jsx";
 import EditPost from "./pages/posts/editPost/EditPost.jsx";
 import Dashposrd from "./pages/dashboard/DashBoard.jsx";
 import CategoryPosts from "./pages/posts/categoryPosts/CategoryPosts.jsx";
@@ -28,7 +28,7 @@ const router = createBrowserRouter(
         <Route path="/" element={<Layouts />} errorElement={<ErrorPage />}>
             <Route index element={<Home />} />
             <Route path="posts/:id" element={<PostDetail />} />
-            <Route path="posts/users/:id" element={<AuthorPost />} />
+            <Route path="posts/users/:id" element={<AuthorPosts />} />
             <Route path="posts/:id/edit" element={<EditPost />} />
             <Route path="myposts/:id" element={<Dashposrd />} />
             <Route

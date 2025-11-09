@@ -1,0 +1,12 @@
+.error_page {
+}
+.center_block {
+    text-align: center;
+    margin-top: 5rem;
+    margin-inline: auto;
+    display: block;
+    width: 100%;
+}
+.error_text {
+    margin-top: 3rem;
+}

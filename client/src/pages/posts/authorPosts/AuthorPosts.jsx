@@ -4,7 +4,7 @@ import style from "./style.module.css";
 import { DUMMY_POSTS } from "../../../assets/data";
 import PostItem from "../../../components/postItem/PostItem";
 
-export default function CategoryPosts() {
+export default function AuthorPosts() {
     const [posts, setPosts] = useState(DUMMY_POSTS);
 
     return (
