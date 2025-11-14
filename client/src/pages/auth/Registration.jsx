@@ -18,7 +18,6 @@ export default function Registration() {
                 <div className={style.form}>
                     <p className={style.error}>This is error message</p>
                     <Input
-                        text="Name"
                         value={userData.name}
                         setValue={(value) =>
                             setUserData({ ...userData, name: value })
@@ -27,7 +26,6 @@ export default function Registration() {
                         placeholder="Enter name..."
                     />
                     <Input
-                        text="Email"
                         value={userData.email}
                         setValue={(value) =>
                             setUserData({ ...userData, email: value })
@@ -36,7 +34,6 @@ export default function Registration() {
                         placeholder="Enter email..."
                     />
                     <Input
-                        text="Password"
                         value={userData.password}
                         setValue={(value) =>
                             setUserData({ ...userData, password: value })
@@ -45,7 +42,6 @@ export default function Registration() {
                         placeholder="Enter password..."
                     />
                     <Input
-                        text="confirm password"
                         value={userData.password2}
                         setValue={(value) =>
                             setUserData({ ...userData, password2: value })

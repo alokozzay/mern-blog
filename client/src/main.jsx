@@ -4,7 +4,7 @@ import { createRoot } from "react-dom/client";
 import Layouts from "./layouts/Layouts.jsx";
 import Home from "./pages/home/Home.jsx";
 import PostDetail from "./pages/posts/postDetail/PostDetail.jsx";
-import UserProfile from "./pages/users/UserProfile.jsx";
+import UserProfile from "./pages/users/userProfile/UserProfile.jsx";
 import Registration from "./pages/auth/Registration.jsx";
 import Login from "./pages/auth/Login.jsx";
 import Logout from "./pages/auth/Logout.jsx";
@@ -12,7 +12,8 @@ import AuthorPosts from "./pages/posts/authorPosts/AuthorPosts.jsx";
 import EditPost from "./pages/posts/editPost/EditPost.jsx";
 import Dashposrd from "./pages/dashboard/DashBoard.jsx";
 import CategoryPosts from "./pages/posts/categoryPosts/CategoryPosts.jsx";
-import Authors from "./pages/users/Authors.jsx";
+import DeletePost from "./pages/posts/deletePost/DeletePost.jsx";
+
 import CreatePost from "./pages/posts/createPost/CreatePost.jsx";
 
 import {
@@ -22,6 +23,7 @@ import {
     RouterProvider,
 } from "react-router-dom";
 import ErrorPage from "./pages/error/ErrorPage.jsx";
+import Authors from "./pages/users/Authors/Authors.jsx";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -30,6 +32,7 @@ const router = createBrowserRouter(
             <Route path="posts/:id" element={<PostDetail />} />
             <Route path="posts/users/:id" element={<AuthorPosts />} />
             <Route path="posts/:id/edit" element={<EditPost />} />
+            <Route path="posts/:id/delete" element={<DeletePost />} />
             <Route path="myposts/:id" element={<Dashposrd />} />
             <Route
                 path="posts/categories/:category"
@@ -40,7 +43,7 @@ const router = createBrowserRouter(
             <Route path="login" element={<Login />} />
             <Route path="logout" element={<Logout />} />
             <Route path="authors" element={<Authors />} />
-            <Route path="create" element={<CreatePost />} /> //
+            <Route path="create" element={<CreatePost />} />
         </Route>
     )
 );

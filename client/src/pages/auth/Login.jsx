@@ -15,7 +15,6 @@ export default function Login() {
                 <h1 className={style.title}>Sign In</h1>
                 <div className={style.form}>
                     <Input
-                        text="Email"
                         value={userData.email}
                         setValue={(value) =>
                             setUserData({ ...userData, email: value })
@@ -24,7 +23,6 @@ export default function Login() {
                         placeholder="Enter email..."
                     />
                     <Input
-                        text="Password"
                         value={userData.password}
                         setValue={(value) =>
                             setUserData({ ...userData, password: value })

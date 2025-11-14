@@ -13,7 +13,7 @@ export default function Header() {
                 </Link>
                 <ul className={style.menu}>
                     <li>
-                        <Link to="/profile">Profile</Link>
+                        <Link to="/profile/1">Profile</Link>
                     </li>
                     <li>
                         <Link to="/create">Create post</Link>

@@ -158,7 +158,7 @@ h3 {
 :root {
     --color-primary: #6f6af8;
     --color-white: #fff;
-    --color-red: rgb(255, 63, 63);
+    --color-red: rgb(199, 71, 71);
     --color-gray-100: hsl (220, 20%, 10%, 5%);
     --color-gray-200: hsl (220, 20%, 10%, 10%);
     --color-gray-300: hsl (220, 20%, 10%, 25%);
