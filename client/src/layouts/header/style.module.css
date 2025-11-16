@@ -1,18 +1,25 @@
-.logo {
-    height: 3rem;
+.container_logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
+
+.name_logo {
+    font-size: 1.6rem;
+}
+
 .navbar {
     display: grid;
     place-items: center;
     width: 100vw;
     height: 5rem;
     background: var(255, 255, 255, 0.5);
-    position: fixed;
+    /* position: fixed;
     top: 0;
     left: 0;
     z-index: 1;
     border-bottom: 4px solid var(--color-bg);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px); */
 }
 
 .container {
@@ -27,6 +34,82 @@
     align-items: center;
     gap: 3rem;
 }
+
 .button_toggle {
+    width: 32px;
+    height: 24px;
     display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.button_toggle span {
+    width: 100%;
+    height: 4px;
+    background: #333;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+/* Анимация открытия */
+.button_toggle.open span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.button_toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.button_toggle.open span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+@media screen and (max-width: 1000px) {
+    .name_logo {
+        font-size: 1.5rem;
+    }
+}
+@media screen and (max-width: 800px) {
+    /* Скрываем меню по умолчанию */
+    .menu {
+        position: fixed;
+        inset: 0;
+        background: white;
+        padding-top: 120px;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        font-size: 22px;
+
+        display: flex;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-20px);
+        transition: 0.35s ease;
+        z-index: 1000;
+    }
+
+    /* Когда открыто */
+    .menu.open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    /* Кнопка бургер показывается */
+    .button_toggle {
+        display: flex;
+        position: relative;
+        z-index: 1101;
+    }
+
+    /* На мобильных обычное меню (десктопное) скрываем полностью */
+    .container > .menu:not(.open) {
+        opacity: 0 !important;
+        pointer-events: none !important;
+        transform: translateY(-20px) !important;
+    }
 }

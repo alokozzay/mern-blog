@@ -9,3 +9,9 @@
     border-radius: var(--radius-2);
     overflow: hidden;
 }
+.name_author {
+    flex: 1;
+}
+.details {
+    margin-right: 2rem;
+}

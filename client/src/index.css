@@ -100,7 +100,7 @@ menu,
 nav,
 section {
     display: block;
-    margin-top: 6rem;
+    margin-top: 2rem;
 }
 body {
     line-height: 1;
@@ -153,6 +153,7 @@ h2 {
 }
 h3 {
     font-size: 1.3rem;
+    font-weight: 600;
 }
 
 :root {
@@ -179,4 +180,19 @@ img {
     display: block;
     object-fit: cover;
     width: 100%;
+}
+.ql-editor {
+    overflow: scroll;
+    height: 10rem !important;
+}
+@media screen and (max-width: 800px) {
+    h1 {
+        font-size: 1.7rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    h3 {
+        font-size: 1.35rem;
+    }
 }

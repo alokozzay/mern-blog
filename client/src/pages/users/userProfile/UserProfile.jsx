@@ -33,12 +33,12 @@ export default function UserProfile() {
                                 type="file"
                                 name="avatar"
                                 id="avatar"
-                                accept="png, jpeg, jpg"
+                                accept="image/*"
                                 onChange={(e) => setAvatar(e.target.files[0])}
                                 className={style.input}
                             />
                             <label htmlFor="avatar" className={style.label}>
-                                <ImagePlus />
+                                <ImagePlus className={style.img_update} />
                             </label>
                         </form>
                         <div className={style.button_check}>

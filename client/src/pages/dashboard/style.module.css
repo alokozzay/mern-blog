@@ -11,7 +11,7 @@
 .post_title {
 }
 .thumbnail {
-    width: 4rem;
+    width: 5rem;
     border-radius: var(--radius-1);
     overflow: hidden;
 }
@@ -29,4 +29,25 @@
     background: var(--color-white);
     padding: 0.5rem 1.2rem;
     border-radius: var(--radius-3);
+}
+@media screen and (max-width: 1000px) {
+    .info {
+        flex: 1;
+        margin-right: 2rem;
+        gap: 1rem;
+    }
+    .thumbnail {
+        width: 4rem;
+    }
+}
+@media screen and (max-width: 800px) {
+    .thumbnail {
+        width: 6rem;
+    }
+    .info {
+        margin-right: 0rem;
+    }
+    .post {
+        display: grid;
+    }
 }

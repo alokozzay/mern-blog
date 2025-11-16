@@ -5,7 +5,7 @@
     width: 100%;
     border: none;
     outline: none;
-    resize: ;
+    /* resize: ; */
     box-sizing: border-box;
 }
 .text_input {

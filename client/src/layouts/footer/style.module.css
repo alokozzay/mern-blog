@@ -28,3 +28,39 @@
     background: var(--color-white);
     color: var(--color-gray-900);
 }
+@media screen and (max-width: 1150px) {
+    .categories {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        text-align: center;
+    }
+    .footer {
+        margin-top: 4.5rem;
+        padding-top: 4.5rem;
+    }
+}
+@media screen and (max-width: 800px) {
+    .categories {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        text-align: center;
+    }
+    .footer {
+        margin-top: 3rem;
+        padding-top: 3rem;
+    }
+}
+@media screen and (max-width: 560px) {
+    .categories {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        text-align: center;
+    }
+    .footer {
+        margin-top: 2rem;
+        padding-top: 2rem;
+    }
+}

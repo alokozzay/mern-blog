@@ -37,3 +37,41 @@ export const DUMMY_POSTS = [
         authorID: 4,
     },
 ];
+
+export const POST_CATEGORIES = [
+    "Agriculture",
+    "Business",
+    "Education",
+    "Entertainment",
+    "Art",
+    "Investment",
+    "Uncategorized",
+    "Weather",
+];
+
+export const FORMATS = [
+    "header",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "indent",
+    "link",
+    "image",
+];
+export const MODULES = {
+    toolbar: [
+        [{ header: [1, 2, 3, 4, 5, 6, false] }],
+        ["bold", "italic", "underline", "strike", "blockquote"],
+        [
+            { list: "ordered" },
+            { list: "bullet" },
+            { indent: "-1" },
+            { indent: "+1" },
+        ],
+        ["link", "image"],
+        ["clean"],
+    ],
+};

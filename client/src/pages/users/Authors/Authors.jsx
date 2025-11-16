@@ -54,7 +54,11 @@ export default function Authors() {
                                 className={style.author}
                             >
                                 <div className={style.avatar}>
-                                    <img src={avatar} alt="avatar" />
+                                    <img
+                                        src={avatar}
+                                        alt="avatar"
+                                        className={style.img}
+                                    />
                                 </div>
                                 <div className={style.info}>
                                     <h4 className={style.info_name}>

@@ -6,11 +6,16 @@ import { Link } from "react-router-dom";
 
 export default function DashBoard() {
     const [posts, setPosts] = useState(DUMMY_POSTS);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 800);
     return (
         <section className={style.main}>
             {posts.length ? (
                 <div className={`${style.container} ${indexStyles.container}`}>
                     {posts.map((post) => {
+                        const shortTitle =
+                            post.title.length > 20
+                                ? post.title.slice(0, 30) + "..."
+                                : post.title;
                         return (
                             <div className={style.post}>
                                 <div className={style.info}>

@@ -20,13 +20,7 @@
     display: grid;
     place-items: center;
 }
-.container {
-    transition: var(--transition);
-    padding: 0rem 4rem 4rem;
-}
-.container:hover {
-    box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.1);
-}
+
 .title {
     margin-bottom: 2rem;
 }
@@ -37,4 +31,12 @@
     color: var(--color-primary);
     cursor: pointer;
     text-decoration: underline;
+}
+@media screen and (max-width: 800px) {
+    .main {
+        width: var(--container-width-md);
+    }
+    .title {
+        margin-bottom: 1rem;
+    }
 }

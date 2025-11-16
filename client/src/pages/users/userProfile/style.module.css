@@ -67,3 +67,27 @@
     display: block;
     margin: 1rem 0;
 }
+@media screen and (max-width: 1000px) {
+    .profile_form {
+        width: var(--container-width-md);
+        margin-top: 2rem;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .avatar_wrapper {
+        width: 10rem;
+    }
+    .label,
+    .button_check {
+        width: 2.3rem;
+        height: 2.3rem;
+        right: 1rem;
+        bottom: 1.3rem;
+    }
+    .avatar {
+        border: 0.5rem solid var(--color-white);
+    }
+    .img_update {
+        width: 1.3rem;
+    }
+}
