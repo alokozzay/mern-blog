@@ -1,24 +1,35 @@
 const HttpError = require("../models/errorModule");
 const UserModel = require("../models/userModel.js");
 const UserService = require("../service/userService.js");
-
+const { validationResult } = require("express-validator");
 class UsersControllers {
     // POST api/users/register - registration
     async registerUser(req, res, next) {
         try {
-            const { name, email, password, confrimPassword } = req.body;
+            const { name, email, password, confirmPassword } = req.body;
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
-                return next(new HttpError("validation error"), errors.array());
+                return next(
+                    new HttpError("validation error", 400, errors.array())
+                );
             }
             const userData = await UserService.registration(
                 name,
                 email,
                 password,
-                confrimPassword
+                confirmPassword
             );
+            res.cookie("refreshToken", userData.refreshToken, {
+                maxAge: 30 * 24 * 60 * 60 * 1000,
+                httpOnly: true,
+            });
+            return res.json(userData);
         } catch (error) {
-            return next(new HttpError("User registration filed.", 422));
+            console.log(error);
+            if (error instanceof HttpError) {
+                return next(error);
+            }
+            return next(new HttpError("User registration failed.", 422));
         }
     }
 
