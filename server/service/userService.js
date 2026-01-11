@@ -5,6 +5,7 @@ const uuid = require("uuid");
 const UserModel = require("../models/userModel.js");
 const TokenService = require("../service/tokenService.js");
 const UserDto = require("..//dtos/userDto.js");
+const userModel = require("../models/userModel.js");
 
 class UserService {
     async registration(name, email, password, confirmPassword) {
@@ -35,7 +36,10 @@ class UserService {
         });
 
         // send activation email
-        await EmailService.sendActivationLink(email, activationLink);
+        await EmailService.sendActivationLink(
+            email,
+            `${process.env.API_URL}/api/users/activate/${activationLink}`
+        );
 
         const userDto = new UserDto(newUser);
 
@@ -43,6 +47,15 @@ class UserService {
         const tokens = TokenService.generationTokens({ ...userDto });
         await TokenService.saveToken(userDto.id, tokens.refreshToken);
         return { ...tokens, user: userDto };
+    }
+
+    async activate(activationLink) {
+        const user = await UserModel.findOne({ activationLink });
+        if (!user) {
+            throw new HttpError("The activation link is invalid.", 400);
+        }
+        user.isEmailVerified = true;
+        await user.save();
     }
 }
 module.exports = new UserService();

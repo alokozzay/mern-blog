@@ -10,6 +10,7 @@ const errorHandler = (error, req, res, next) => {
     }
     res.status(error.status || 500).json({
         message: error.message || "An uknown error occured",
+        errors: error.details || null,
     });
 };
 

@@ -16,6 +16,7 @@ router.post("/login", userControllers.loginUser);
 router.post("/change-avatar", userControllers.changeAvatar);
 router.post("/logout", userControllers.logoutUser);
 router.get("/authors", userControllers.getAuthors);
+router.get("/activate/:link", userControllers.activate);
 router.get("/:id", userControllers.getUser);
 router.get("/refresh", userControllers.refresh);
 router.patch("/edit-user", userControllers.editUser);

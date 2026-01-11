@@ -1,5 +1,6 @@
 const HttpError = require("../models/errorModule");
 const UserModel = require("../models/userModel.js");
+const userService = require("../service/userService.js");
 const UserService = require("../service/userService.js");
 const { validationResult } = require("express-validator");
 class UsersControllers {
@@ -25,8 +26,8 @@ class UsersControllers {
             });
             return res.json(userData);
         } catch (error) {
-            console.log(error);
             if (error instanceof HttpError) {
+                console.log(error);
                 return next(error);
             }
             return next(new HttpError("User registration failed.", 422));
@@ -63,6 +64,20 @@ class UsersControllers {
     // get api/users/refresh -  get refresh token
     async refresh(req, res, next) {
         res.json("refresh token!");
+    }
+
+    async activate(req, res, next) {
+        try {
+            const activationLink = req.params.link;
+            await userService.activate(activationLink);
+            return res.redirect(process.env.CLIENT_URL);
+        } catch (error) {
+            console.log(error);
+            if (error instanceof HttpError) {
+                return next(error);
+            }
+            return next(new HttpError("User registration failed.", 422));
+        }
     }
 }
 
