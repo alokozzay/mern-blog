@@ -3,19 +3,19 @@ const TokenModel = require("../models/tokenModel.js");
 
 class TokenService {
     generationTokens(payload) {
-        const accsessToken = jwt.sign(payload, process.env.JWT_ACCESS_SECRET, {
+        const accessToken = jwt.sign(payload, process.env.JWT_ACCESS_SECRET, {
             expiresIn: "1h",
         });
         const refreshToken = jwt.sign(payload, process.env.JWT_REFRESH_SECRET, {
             expiresIn: "30d",
         });
         return {
-            accsessToken,
+            accessToken,
             refreshToken,
         };
     }
 
-    async saveToken(userId, refreshToken) {
+    async saveTokenInDb(userId, refreshToken) {
         const tokenData = await TokenModel.findOne({ user: userId });
         if (tokenData) {
             tokenData.refreshToken = refreshToken;

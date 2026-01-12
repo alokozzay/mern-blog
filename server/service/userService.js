@@ -45,7 +45,7 @@ class UserService {
 
         // create token jwt
         const tokens = TokenService.generationTokens({ ...userDto });
-        await TokenService.saveToken(userDto.id, tokens.refreshToken);
+        await TokenService.saveTokenInDb(userDto.id, tokens.refreshToken);
         return { ...tokens, user: userDto };
     }
 
@@ -56,6 +56,24 @@ class UserService {
         }
         user.isEmailVerified = true;
         await user.save();
+    }
+
+    async login(email, password) {
+        const user = await UserModel.findOne({ email });
+
+        if (!user) {
+            throw new HttpError("a user with such an email will not find", 400);
+        }
+
+        const isPassEquals = await bcrypt.compare(password, user.password);
+        if (!isPassEquals) {
+            throw new HttpError("incorrect password", 400);
+        }
+
+        const userDto = new UserDto(user);
+        const tokens = TokenService.generationTokens({ userDto });
+        TokenService.saveTokenInDb(userDto.id, tokens.refreshToken);
+        return { ...tokens, user: userDto };
     }
 }
 module.exports = new UserService();

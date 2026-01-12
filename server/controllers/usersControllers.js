@@ -36,7 +36,23 @@ class UsersControllers {
 
     // post api/users/login - login user
     async loginUser(req, res, next) {
-        res.json("login user!");
+        try {
+            const { email, password } = req.body;
+            const userData = await UserService.login(email, password);
+            res.cookie("refreshToken", userData.refreshToken, {
+                maxAge: 30 * 24 * 60 * 60 * 1000,
+                httpOnly: true,
+            });
+            return res.json(userData);
+        } catch (error) {
+            if (error instanceof HttpError) {
+                console.log(error);
+                return next(error);
+            }
+            return next(
+                new HttpError("An error occurred while trying to log in.", 422)
+            );
+        }
     }
     // post api/users/change-avatar - change avatar
     async changeAvatar(req, res, next) {
