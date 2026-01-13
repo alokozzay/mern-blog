@@ -75,5 +75,9 @@ class UserService {
         TokenService.saveTokenInDb(userDto.id, tokens.refreshToken);
         return { ...tokens, user: userDto };
     }
+
+    async logout(refreshToken) {
+        await TokenService.removeToken(refreshToken);
+    }
 }
 module.exports = new UserService();

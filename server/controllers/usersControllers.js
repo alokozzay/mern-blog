@@ -3,6 +3,8 @@ const UserModel = require("../models/userModel.js");
 const userService = require("../service/userService.js");
 const UserService = require("../service/userService.js");
 const { validationResult } = require("express-validator");
+const { handleHttpError } = require("../utils/errorHelper.js");
+
 class UsersControllers {
     // POST api/users/register - registration
     async registerUser(req, res, next) {
@@ -26,11 +28,7 @@ class UsersControllers {
             });
             return res.json(userData);
         } catch (error) {
-            if (error instanceof HttpError) {
-                console.log(error);
-                return next(error);
-            }
-            return next(new HttpError("User registration failed.", 422));
+            handleHttpError(error, next, "User registration failed.", 422);
         }
     }
 
@@ -45,24 +43,40 @@ class UsersControllers {
             });
             return res.json(userData);
         } catch (error) {
-            if (error instanceof HttpError) {
-                console.log(error);
-                return next(error);
-            }
-            return next(
-                new HttpError("An error occurred while trying to log in.", 422)
+            handleHttpError(
+                error,
+                next,
+                "An error occurred while trying to log in.",
+                422
             );
         }
     }
+
+    // post api/users/logout - logout user
+    async logoutUser(req, res, next) {
+        try {
+            const { refreshToken } = req.cookies;
+            if (refreshToken) {
+                await UserService.logout(refreshToken);
+            }
+            res.clearCookie("refreshToken");
+            return res.sendStatus(200);
+        } catch (error) {
+            res.clearCookie("refreshToken");
+            handleHttpError(
+                error,
+                next,
+                "An error occurred while logging out.",
+                422
+            );
+        }
+    }
+
     // post api/users/change-avatar - change avatar
     async changeAvatar(req, res, next) {
         res.json("change user avatar!");
     }
 
-    // post api/users/logout - logout user
-    async logoutUser(req, res, next) {
-        res.json("logout user !");
-    }
     // get api/users/:id - user profile
     async getUser(req, res, next) {
         res.json("User profile!");
